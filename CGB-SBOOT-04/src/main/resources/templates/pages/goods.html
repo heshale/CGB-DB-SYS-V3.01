@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>myGoods</title>
+</head>
+<body>
+	<h1>GOODS</h1>
+	<div>
+	<form>
+	<UI>
+	<li><input type="text" name="name">
+	<li>remark:
+	<li><textarea rows="3" cols="50"  name="remark"  >
+	</textarea>
+	<li><input type="submit" value="save"  >
+	</UI>
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>remark</th>
+				<th>createdTime</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="g:${list}">
+				<td th:text="${g.id}"></td>
+				<td th:text="${g.name}"></td>
+				<td th:text="${g.remark}"></td>
+				 <td th:text="${#dates.format(g.createdTime, 'yyyy/MM/dd HH:mm')}"></td>
+           <td><a th:href="@{/goods/doDeleteById(id=${g.id})}">delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+	  </div>
+</body>
+</html>
